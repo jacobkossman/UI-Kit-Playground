@@ -1,0 +1,40 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Source+Sans+Pro';
+
+@display-font: 'Roboto Slab', cursive;
+@body-font: 'Source Sans Pro', sans-serif;
+
+body {
+    font-family: @body-font;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: @display-font;
+    font-weight: 700;
+}
+
+.uk-overlay-panel {
+    p {
+        text-align: justify;
+    }
+}
+
+.uk-notify {
+    top: .5%;
+    left: .5%;
+    margin-left: 0px;
+    width: 99%;
+}
+
+.uk-offcanvas-page {
+    width: 100% !important;    
+}
+
+.uk-navbar-nav {
+    li {
+        a {
+            font-family: @display-font;    
+            text-transform: uppercase;
+            font-weight: 700;                
+        }
+    }
+}
