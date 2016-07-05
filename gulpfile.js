@@ -118,7 +118,7 @@ gulp.task('uikit-css', function(){
     ])
     .pipe(plugins.less())
     .pipe(plugins.concat('components.min.css'))
-    .pipe(plugins.minify({keepSpecialComments:0}))
+    .pipe(plugins.cleanCss({keepSpecialComments:0}))
     .pipe(gulp.dest(paths.production.css));
 });
 
