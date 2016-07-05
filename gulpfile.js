@@ -117,7 +117,7 @@ gulp.task('uikit-css', function(){
         'bower_components/uikit/css/components/notify.min.css'
     ])
     .pipe(less())
-    .pipe(concat('components.min.css'))
+    .pipe(plugins.concat('components.min.css'))
     .pipe(minify({keepSpecialComments:0}))
     .pipe(gulp.dest(paths.production.css));
 });
