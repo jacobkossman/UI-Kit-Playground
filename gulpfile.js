@@ -102,7 +102,7 @@ gulp.task('uikit-js', function(){
         'bower_components/uikit/js/components/form-password.min.js',
         'bower_components/uikit/js/components/notify.min.js'
     ])
-    .pipe(concat('components.min.js'))
+    .pipe(plugins.concat('components.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest(paths.production.js));
 });
