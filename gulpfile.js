@@ -103,7 +103,7 @@ gulp.task('uikit-js', function(){
         'bower_components/uikit/js/components/notify.min.js'
     ])
     .pipe(plugins.concat('components.min.js'))
-    .pipe(uglify())
+    .pipe(plugins.uglify())
     .pipe(gulp.dest(paths.production.js));
 });
 
@@ -116,9 +116,9 @@ gulp.task('uikit-css', function(){
         'bower_components/uikit/css/components/form-password.min.css',
         'bower_components/uikit/css/components/notify.min.css'
     ])
-    .pipe(less())
+    .pipe(plugins.less())
     .pipe(plugins.concat('components.min.css'))
-    .pipe(minify({keepSpecialComments:0}))
+    .pipe(plugins.minify({keepSpecialComments:0}))
     .pipe(gulp.dest(paths.production.css));
 });
 
