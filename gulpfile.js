@@ -28,8 +28,7 @@ var paths = {
 
 gulp.task('vendor-fonts', function() {
     return gulp.src([
-        'bower_components/font-awesome/fonts/fontawesome-webfont.*',
-        'bower_components/Ionicons/fonts/ionicons.*'
+        'bower_components/font-awesome/fonts/fontawesome-webfont.*'
     ])
     .pipe(gulp.dest(paths.production.fonts));
 });
@@ -92,7 +91,38 @@ gulp.task('fonts', function() {
     .pipe(plugins.notify('Fonts task complete'));
 });
 
-gulp.task('default', ['vendor-fonts','vendor-js','vendor-css','css','js','images','fonts'], function () {
+// UI Kit Specific Tasks - Add JS components and accompanying CSS files
+
+gulp.task('uikit-js', function(){
+    return gulp.src([
+        'bower_components/uikit/js/components/sticky.min.js',
+        'bower_components/uikit/js/components/autocomplete.min.js',
+        'bower_components/uikit/js/components/datepicker.min.js',
+        'bower_components/uikit/js/components/timepicker.min.js',
+        'bower_components/uikit/js/components/form-password.min.js',
+        'bower_components/uikit/js/components/notify.min.js'
+    ])
+    .pipe(concat('components.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(paths.production.js));
+});
+
+gulp.task('uikit-css', function(){
+    return gulp.src([
+        'bower_components/uikit/css/components/sticky.min.css',
+        'bower_components/uikit/css/components/autocomplete.min.css',
+        'bower_components/uikit/css/components/datepicker.min.css',
+        'bower_components/uikit/css/components/timepicker.min.css',
+        'bower_components/uikit/css/components/form-password.min.css',
+        'bower_components/uikit/css/components/notify.min.css'
+    ])
+    .pipe(less())
+    .pipe(concat('components.min.css'))
+    .pipe(minify({keepSpecialComments:0}))
+    .pipe(gulp.dest(paths.production.css));
+});
+
+gulp.task('default', ['vendor-fonts','vendor-js','vendor-css','css','js','images','fonts','uikit-js','uikit-css'], function () {
     gulp.watch('src/less/*.less', ['css']);
     gulp.watch('src/js/author.js', ['js']);
     gulp.watch('src/img/*.{png,jpg,gif}', ['images']);
